@@ -4,11 +4,13 @@ using UnityEngine.Scripting;
 namespace Agava.GameCoupons
 {
     [Serializable]
-    public class LoginResponse
+    internal struct AddGameResponse
     {
         [field: Preserve]
-        public string access;
+        public string name;
         [field: Preserve]
-        public string refresh;
+        public int[] genre_ids;
+        [field: Preserve]
+        public int[] platform_ids;
     }
 }

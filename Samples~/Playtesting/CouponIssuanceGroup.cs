@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 namespace Agava.GameCoupons.Samples.Playtesting
 {
-    public class PlatformsGroup : MonoBehaviour
+    public class CouponIssuanceGroup : MonoBehaviour
     {
-        [SerializeField] private InputField _page;
-        [SerializeField] private InputField _size;
+        [SerializeField] private InputField _longitude;
+        [SerializeField] private InputField _latitude;
+        [SerializeField] private InputField _gameId;
         [SerializeField] private Button _requestButton;
 
         private void OnEnable()
@@ -21,10 +22,10 @@ namespace Agava.GameCoupons.Samples.Playtesting
 
         private async void OnRequestButtonClicked()
         {
-            var platforms = await GameCoupons.Platforms(int.Parse(_page.text), int.Parse(_size.text), (error) => Debug.LogError(error));
+            var coupon = await GameCoupons.CouponIssuance(int.Parse(_longitude.text), int.Parse(_latitude.text), int.Parse(_gameId.text), (error) => Debug.LogError(error));
 
-            if (platforms != null)
-                Debug.Log($"Platforms: {JsonUtility.ToJson(platforms)}");
+            if (coupon != null)
+                Debug.Log($"Coupon: {JsonUtility.ToJson(coupon)}");
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Agava.GameCoupons.Samples.Playtesting
 {
-    public class PlatformsGroup : MonoBehaviour
+    public class GetGamesGroup : MonoBehaviour
     {
         [SerializeField] private InputField _page;
         [SerializeField] private InputField _size;
@@ -21,10 +21,10 @@ namespace Agava.GameCoupons.Samples.Playtesting
 
         private async void OnRequestButtonClicked()
         {
-            var platforms = await GameCoupons.Platforms(int.Parse(_page.text), int.Parse(_size.text), (error) => Debug.LogError(error));
+            var games = await GameCoupons.GetGames(int.Parse(_page.text), int.Parse(_size.text), (error) => Debug.LogError(error));
 
-            if (platforms != null)
-                Debug.Log($"Platforms: {JsonUtility.ToJson(platforms)}");
+            if (games != null)
+                Debug.Log($"GetGames: {JsonUtility.ToJson(games)}");
         }
     }
 }
