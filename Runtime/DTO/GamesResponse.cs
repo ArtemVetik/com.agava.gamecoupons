@@ -4,7 +4,7 @@ using UnityEngine.Scripting;
 namespace Agava.GameCoupons
 {
     [Serializable]
-    public class OrganizationsResponse
+    public class GamesResponse
     {
         [field: Preserve]
         public Item[] items;
@@ -25,7 +25,27 @@ namespace Agava.GameCoupons
             [field: Preserve]
             public string name;
             [field: Preserve]
-            public string logo_url;
+            public Genre[] genres;
+            [field: Preserve]
+            public Platform[] platforms;
+        }
+
+        [Serializable]
+        public class Genre
+        {
+            [field: Preserve]
+            public int id;
+            [field: Preserve]
+            public string name;
+        }
+
+        [Serializable]
+        public class Platform
+        {
+            [field: Preserve]
+            public int id;
+            [field: Preserve]
+            public string name;
         }
     }
 }
